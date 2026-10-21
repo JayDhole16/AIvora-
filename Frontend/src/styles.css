@@ -1,0 +1,388 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Aivora design system — v3.
+ * Rich dark theme: deep indigo-charcoal base, a violet -> blue signature
+ * gradient, glassy translucent surfaces, and colored glow shadows for
+ * depth. Status colors (draft/testing/live/attention) stay vivid since
+ * they carry real meaning.
+ */
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 3px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 10px);
+  --radius-3xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-voice: var(--voice);
+  --color-voice-foreground: var(--voice-foreground);
+  --color-voice-soft: var(--voice-soft);
+  --color-status-draft: var(--status-draft);
+  --color-status-testing: var(--status-testing);
+  --color-status-live: var(--status-live);
+  --color-status-attention: var(--status-attention);
+  --color-surface: var(--surface);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --shadow-panel:
+    0 1px 1px oklch(0 0 0 / 0.3),
+    0 12px 32px -8px oklch(0 0 0 / 0.45);
+}
+
+:root {
+  --radius: 1rem;
+
+  --background: oklch(0.16 0.022 275);
+  --foreground: oklch(0.97 0.008 260);
+  --surface: oklch(0.21 0.03 275);
+  --card: oklch(0.21 0.03 275);
+  --card-foreground: oklch(0.97 0.008 260);
+  --popover: oklch(0.22 0.03 275);
+  --popover-foreground: oklch(0.97 0.008 260);
+  --secondary: oklch(0.27 0.03 275);
+  --secondary-foreground: oklch(0.95 0.008 260);
+  --muted: oklch(0.24 0.025 275);
+  --muted-foreground: oklch(0.68 0.02 270);
+  --accent: oklch(0.3 0.05 280);
+  --accent-foreground: oklch(0.95 0.03 280);
+  --destructive: oklch(0.65 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 13%);
+  --ring: oklch(0.68 0.19 288);
+
+  /* Signature gradient: violet -> blue. Used for primary CTAs, gradient
+     text, glowing borders and chart series 1/2. */
+  --grad-from: oklch(0.63 0.24 292);
+  --grad-via: oklch(0.62 0.22 275);
+  --grad-to: oklch(0.68 0.18 233);
+  --glow: oklch(0.63 0.24 292 / 0.55);
+
+  --primary: var(--grad-from);
+  --primary-foreground: oklch(0.99 0.005 260);
+  --voice: var(--grad-from);
+  --voice-foreground: oklch(0.99 0.005 260);
+  --voice-soft: oklch(0.63 0.24 292 / 14%);
+
+  --status-draft: oklch(0.65 0.02 260);
+  --status-testing: oklch(0.8 0.16 82);
+  --status-live: oklch(0.76 0.17 156);
+  --status-attention: oklch(0.68 0.21 25);
+
+  --chart-1: var(--grad-from);
+  --chart-2: var(--grad-to);
+  --chart-3: oklch(0.76 0.17 156);
+  --chart-4: oklch(0.8 0.16 82);
+  --chart-5: oklch(0.72 0.2 350);
+
+  --sidebar: oklch(0.14 0.02 275);
+  --sidebar-foreground: oklch(0.97 0.008 260);
+  --sidebar-primary: var(--grad-from);
+  --sidebar-primary-foreground: oklch(0.99 0.005 260);
+  --sidebar-accent: oklch(0.24 0.03 275);
+  --sidebar-accent-foreground: oklch(0.97 0.008 260);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: oklch(0.68 0.19 288);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-background);
+    background-image:
+      radial-gradient(ellipse 1200px 800px at 15% -10%, oklch(0.63 0.24 292 / 0.16), transparent 60%),
+      radial-gradient(ellipse 1000px 700px at 90% 10%, oklch(0.68 0.18 233 / 0.13), transparent 55%);
+    background-attachment: fixed;
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: oklch(0.63 0.24 292 / 35%);
+  }
+}
+
+/* Frosted glass card: translucent surface + blur + soft ambient shadow.
+   `panel` is kept as an alias so older markup gets the same treatment. */
+@utility glass {
+  background-color: color-mix(in oklab, var(--color-surface) 65%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-panel);
+}
+
+@utility panel {
+  background-color: color-mix(in oklab, var(--color-surface) 65%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-panel);
+}
+
+/* Single-element gradient border: two layered backgrounds using
+   padding-box / border-box, no extra wrapper markup needed. */
+@utility gradient-border {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+    linear-gradient(135deg, var(--grad-from), var(--grad-via), var(--grad-to)) border-box;
+}
+
+/* Gradient-filled text. */
+@utility text-gradient {
+  background: linear-gradient(100deg, var(--grad-from), var(--grad-via) 55%, var(--grad-to));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Colored glow shadow, e.g. under primary buttons and hovered cards. */
+@utility glow {
+  box-shadow:
+    0 0 0 1px oklch(1 0 0 / 6%) inset,
+    0 8px 24px -6px var(--glow);
+}
+
+@utility glow-lg {
+  box-shadow: 0 0 60px -10px var(--glow);
+}
+
+/* Small caps label, e.g. "01 / ABOUT" or a stat header. */
+@utility label-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+/* Blinking caret, used after typewriter text. */
+@utility cursor-blink {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  vertical-align: text-bottom;
+  margin-left: 2px;
+  background-color: currentColor;
+  border-radius: 1px;
+  animation: cursor-blink 1s step-end infinite;
+}
+
+@keyframes cursor-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Infinite horizontal ticker. Wrap two copies of the same content in a flex
+   row with this utility; the duplicate makes the loop seamless. */
+@utility animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Lift + glow on hover, for anything clickable/card-like. */
+@utility hover-lift {
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: oklch(0.63 0.24 292 / 40%);
+    box-shadow: 0 16px 40px -12px oklch(0 0 0 / 0.5), 0 0 32px -8px var(--glow);
+  }
+}
+
+/* Vertical audio bar, used by <Waveform>. Height animates via scaleY so it
+   works regardless of flex sizing quirks. */
+@utility waveform-bar {
+  transform-origin: center;
+  animation: waveform 1.1s ease-in-out infinite;
+}
+
+@keyframes waveform {
+  0%,
+  100% {
+    transform: scaleY(0.25);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+/* Mouse-tracking radial glow. A parent needs position:relative; this fills
+   it and follows --spot-x/--spot-y custom properties set from JS. */
+@utility spotlight {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    650px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    oklch(0.63 0.24 292 / 20%),
+    transparent 45%
+  );
+}
+
+/* Large blurred gradient orb for aurora backgrounds. Position + size via
+   inline style / utility classes on the element itself. */
+@utility aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.55;
+  animation: aurora-drift 18s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes aurora-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(4%, -6%) scale(1.08);
+  }
+  66% {
+    transform: translate(-3%, 4%) scale(0.95);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@utility animate-glow-pulse {
+  animation: glow-pulse 2.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .animate-marquee,
+  .aurora-blob,
+  .animate-glow-pulse,
+  .cursor-blink {
+    animation: none;
+  }
+
+  .waveform-bar {
+    animation: none;
+    transform: scaleY(0.6);
+  }
+
+  .hover-lift {
+    transition: none;
+  }
+
+  .hover-lift:hover {
+    transform: none;
+  }
+}

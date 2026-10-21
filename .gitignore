@@ -1,0 +1,46 @@
+# ---- Secrets / environment ----
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+.dev.vars
+
+# ---- Node ----
+node_modules/
+# Root has no JS package; these were created by an accidental `npm install` here
+/package.json
+/package-lock.json
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# ---- Supabase CLI local state ----
+**/supabase/.temp/
+**/supabase/.branches/
+# Supabase CLI run from repo root by mistake (real project lives in Frontend/supabase)
+/supabase/
+
+# ---- Logs ----
+*.log
+
+# ---- Build output ----
+dist/
+.output/
+
+# ---- Editor / OS / tooling ----
+.idea/
+.DS_Store
+Thumbs.db
+.claude/settings.local.json
+
+# ---- Legacy service folder (renamed to aivora-rag-service) ----
+/bizpilot-rag-service/
